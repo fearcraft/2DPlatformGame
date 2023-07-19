@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     //Player should have:
     //BoxCollider2D
     //Rigidbody2D (Frezee rotation z)
+    //Platforms should have a BoxCollider2D and tag "platform"
 
     Rigidbody2D rb;
 
@@ -56,6 +57,15 @@ public class Player : MonoBehaviour
 
         Vector3 move = new Vector3(moveX, moveY, 0);
 
+        if (blockedLeft && moveX < 0)
+        {
+            move.x = 0;
+        }
+        if (blockedRight && moveX > 0)
+        {
+            move.x = 0;
+        }
+        
         rb.velocity = move;
 
     }
